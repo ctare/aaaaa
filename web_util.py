@@ -72,8 +72,8 @@ def search(query, sort="v", url=None):
 
 
 if __name__ == "__main__":
-    print(search(url="http://www.nicovideo.jp/search/%E3%82%8C%E3%82%92%E3%82%8B?page=2&amp;sort=v&amp;order=d"))
-    # data = get_video_data(24399677)
+    # print(search(url="http://www.nicovideo.jp/search/%E3%82%8C%E3%82%92%E3%82%8B?page=2&amp;sort=v&amp;order=d"))
+    data = get_mp4(24399677)
     # print(data["description"])
     # print(data.keys())
     # add_link(data["description"])
