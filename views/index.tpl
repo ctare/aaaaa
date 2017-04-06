@@ -1,6 +1,6 @@
 % rebase("base.tpl", title='')
 % from bottle import template
-<form id="search-form">
+<form id="search-form" style="position: fixed">
   <input id="search" type="text" placeholder="検索" v-model="highlight">
 </form>
 
