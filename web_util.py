@@ -12,7 +12,7 @@ def get_video_data(video_id):
         root = ElementTree.fromstring(response.text)
         data = {element.tag: element.text for element in root.find("thumb")}
         response = requests.get("http://www.nicovideo.jp/watch/sm{}".format(video_id))
-        soup = BeautifulSoup(response.text, "lxml")
+        soup = BeautifulSoup(response.text, "html.parser")
         data["description"] = add_link(soup.find("p", {"itemprop": "description"}).renderContents().decode("utf-8"))
         return data
     return None
@@ -51,7 +51,7 @@ def search(query, sort="v", url=None):
     if not url:
         url = "http://www.nicovideo.jp/search/{}?sort={}".format(query, sort)
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(response.text, "html.parser")
     result = []
     for li in soup.select(".video.uad.videoList01 li.item"):
         result.append({"title": li.select("a[title]")[0]["title"], "watch_id": li["data-id"]})

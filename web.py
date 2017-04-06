@@ -40,4 +40,4 @@ def description():
     return template("description.tpl", video_data)
 
 if __name__ == "__main__":
-    run(host="localhost", port=8080, debug=True, reloader=True)
+    run(host="0.0.0.0", port=8000, debug=True, reloader=True)
