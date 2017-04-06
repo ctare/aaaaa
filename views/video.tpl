@@ -1,3 +1,4 @@
+<script src="{{! key_url }}"></script>
 <script src="{{! cookie_url }}"></script>
 <iframe class="player" src="" frameborder="0"></iframe>
 <script>

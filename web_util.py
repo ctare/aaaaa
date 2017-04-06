@@ -36,12 +36,13 @@ def add_link(message):
 
 
 def get_mp4(video_id):
-    response = requests.get("http://embed.nicovideo.jp/play/sm{}?parent=&serviceUserId=ZjnIxfUXmT_1491466820678".format(video_id))
+    key_url = "http://embed.nicovideo.jp/play/sm{}?parent=&serviceUserId=ZjnIxfUXmT_1491466820678".format(video_id)
+    response = requests.get(key_url)
     key = json.loads(response.text)
     cookie_url = "http://ext.nicovideo.jp/thumb_watch/sm{}?k={}&device=html5_watch".format(video_id, key["thumbWatchPlayKey"])
     response = requests.get(cookie_url)
     url = urllib.request.unquote(re.search(r"http.*$", response.text).group()).replace("premium=0", "premium=1")
-    return {"cookie_url": cookie_url, "url": url}
+    return {"key_url": key_url, "cookie_url": cookie_url, "url": url}
 
 
 IS_NUMBER = re.compile(r"\d+")
