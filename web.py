@@ -39,5 +39,11 @@ def description():
     video_data = get_video_data(video_id)
     return template("description.tpl", video_data)
 
+
+@route('/file/<filename:path>')
+def static(filename):
+    return static_file(filename, root="/home/c0115114ca/my/python/youtube/static")
+
+
 if __name__ == "__main__":
     run(host="0.0.0.0", port=8000, debug=True, reloader=True)

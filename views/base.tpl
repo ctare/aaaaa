@@ -15,6 +15,7 @@
 
     <!-- vue -->
     <script src="https://unpkg.com/vue@2.2.6"></script>
+    <!-- <script src="file/jquery.xdomainajax.js"></script> -->
     <title>{{title or "nico download"}}</title>
   </head>
   <body>

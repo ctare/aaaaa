@@ -1,8 +1,9 @@
-<script src="{{! key_url }}"></script>
-<script src="{{! cookie_url }}"></script>
-<iframe class="player" src="" frameborder="0"></iframe>
+<iframe class="player" src=""></iframe>
 <script>
-  setTimeout(() => {
-    $("iframe").attr("src", "{{! url }}")
-  }, 300)
+  $(function(){
+    (new Image()).src = "{{! cookie_url }}"
+    setTimeout(function(){
+        $("iframe.player").attr("src", "{{! url }}")
+    }, 300)
+  })
 </script>
