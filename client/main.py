@@ -6,12 +6,15 @@ import urllib
 @get("/")
 def index():
     video_id = request.query.get("video_id")
+    print("connect: ", "sm" + video_id)
     key_url = "http://embed.nicovideo.jp/play/sm{}?parent=&serviceUserId=ZjnIxfUXmT_1491466820678".format(video_id)
     response = requests.get(key_url)
     key = json.loads(response.text)
     cookie_url = "http://ext.nicovideo.jp/thumb_watch/sm{}?k={}&device=html5_watch".format(video_id, key["thumbWatchPlayKey"])
     response = requests.get(cookie_url, cookies=response.cookies)
     url = urllib.request.unquote(re.search(r"http.*$", response.text).group()).replace("premium=0", "premium=1")
+    print("cookie url:", key_url)
+    print("url:", key_url)
     return "{}\n{}".format(cookie_url, url)
 
 if __name__ == "__main__":
