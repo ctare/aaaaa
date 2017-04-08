@@ -36,9 +36,10 @@ def add_link(message):
 
 
 def get_mp4(video_id):
-    response = requests.get("http://localhost:3030?video_id={}".format(video_id))
-    cookie_url, url = response.text.split("\n")
-    return {"cookie_url": cookie_url, "url": url}
+    # response = requests.get("http://localhost:3030?video_id={}".format(video_id))
+    # cookie_url, url = response.text.split("\n")
+    # return {"video_id": video_id, "cookie_url": cookie_url, "url": url}
+    return {"video_id": video_id}
 
 
 IS_NUMBER = re.compile(r"\d+")

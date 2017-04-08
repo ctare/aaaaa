@@ -13,9 +13,9 @@ def index():
     cookie_url = "http://ext.nicovideo.jp/thumb_watch/sm{}?k={}&device=html5_watch".format(video_id, key["thumbWatchPlayKey"])
     response = requests.get(cookie_url, cookies=response.cookies)
     url = urllib.request.unquote(re.search(r"http.*$", response.text).group()).replace("premium=0", "premium=1")
-    print("cookie url:", key_url)
-    print("url:", key_url)
-    return "{}\n{}".format(cookie_url, url)
+    response = HTTPResponse(body="{}\n{}".format(cookie_url, url))
+    response.set_header("Access-Control-Allow-Origin", "*")
+    return response
 
 if __name__ == "__main__":
     run(host="localhost", port=3030, debug=True, reloader=True)

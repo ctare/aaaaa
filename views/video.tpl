@@ -1,9 +1,13 @@
+% rebase("base.tpl", title='')
 <iframe class="player" src=""></iframe>
 <script>
   $(function(){
-    (new Image()).src = "{{! cookie_url }}"
-    setTimeout(function(){
-        $("iframe.player").attr("src", "{{! url }}")
-    }, 300)
+    $.get("http://localhost:3030/?video_id={{ video_id }}", function(data){
+      urls = data.split("\n")
+      ;(new Image()).src = urls[0]
+      setTimeout(function(){
+          $("iframe.player").attr("src", urls[1])
+      }, 300)
+    })
   })
 </script>
